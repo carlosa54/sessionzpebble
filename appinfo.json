@@ -5,39 +5,15 @@
     ],
     "companyName": "carlosarg54@gmail.com",
     "longName": "sessionzpebble",
-    "projectType": "pebblejs",
+    "projectType": "native",
     "resources": {
-        "media": [
-            {
-                "file": "images/menu_icon.png",
-                "menuIcon": true,
-                "name": "IMAGE_MENU_ICON",
-                "type": "png"
-            },
-            {
-                "file": "images/logo_splash.png",
-                "name": "IMAGE_LOGO_SPLASH",
-                "type": "png"
-            },
-            {
-                "file": "images/tile_splash.png",
-                "name": "IMAGE_TILE_SPLASH",
-                "type": "png"
-            },
-            {
-                "file": "fonts/UbuntuMono-Regular.ttf",
-                "name": "MONO_FONT_14",
-                "type": "font"
-            }
-        ]
+        "media": []
     },
     "sdkVersion": "3",
     "shortName": "sessionzpebble",
-    "uuid": "4c0f2df1-4e0d-4b2f-8129-d1f2aa0a17b8",
-    "versionCode": 1,
+    "uuid": "3cd624b4-a3eb-44fc-b0c2-6a4ee64d9979",
     "versionLabel": "1.0",
     "watchapp": {
-        "hiddenApp": false,
         "watchface": false
     }
 }
