@@ -11,7 +11,7 @@ var parseFeed = function(data, quantity) {
         
         tasks.push({title: title, duration: duration});
   }
-  // Finally return whole array
+  
   return tasks;
 };
 
@@ -36,6 +36,7 @@ splashWindow.show();
 
 
 var URL = 'http://sessionz.meteor.com/collectionapi/tasks';
+var url = URL + '/';
 ajax(
   {
     url: URL,
@@ -43,7 +44,8 @@ ajax(
   },
   function(data) {
     console.log(data.title);
-    console.log('Successfully fetched weather data!');
+    console.log('Successfully fetched data!');
+    url += data[0]._id;
     var menuItems = parseFeed(data, 10);
     // Construct Menu to show to user
     var resultsMenu = new UI.Menu({
@@ -77,10 +79,21 @@ resultsMenu.on('select', onTimerSelect);
 var globalIntervalId;
 
 function onTimerSelect(e){
-  
-  var timeout = e.item.duration;
-  
+  clearInterval(globalIntervalId);
+  var timeout = 5//e.item.duration;
+
   globalIntervalId = timer(timeout);
+  
+  ajax(
+  {
+    url: url,
+    method: 'DELETE'
+  },
+  function(data, status, request) {
+    console.log(data);
+  }
+);
+
 }
 
 
@@ -101,8 +114,9 @@ function timer(timerInSec){
     } else {
       readyMessage.show();
       wind.hide();
-
       
+
+      clearInterval(globalIntervalId);
 
       Vibe.vibrate('long');
     }
@@ -119,7 +133,9 @@ function timer(timerInSec){
 
   wind.add(textfield);
   wind.show();
-  
+  wind.on('hide', function(){
+    clearInterval(globalIntervalId);
+  });
   return intervalId;
 }
 
